@@ -86,20 +86,20 @@
 
   <!-- end bug workaround for https://github.com/dotnet/sdk/issues/42708 -->
 
-  <!--  <PropertyGroup Condition="$(IntersectClientPlugin)">-->
-  <!--    <IntersectExecutableName Condition="'$(IntersectExecutableName)' == '' AND '$(INTERSECT_CLIENT_EXECUTABLE_NAME)' == ''">$(INTERSECT_CLIENT_EXECUTABLE_NAME)</IntersectExecutableName>-->
-  <!--    <IntersectExecutableName Condition="'$(IntersectExecutableName)' == ''">Intersect Client</IntersectExecutableName>-->
-  <!--  </PropertyGroup>-->
+  <PropertyGroup Condition="$(IntersectClientPlugin)">
+  <IntersectExecutableName Condition="'$(IntersectExecutableName)' == '' AND '$(INTERSECT_CLIENT_EXECUTABLE_NAME)' == ''">$(INTERSECT_CLIENT_EXECUTABLE_NAME)</IntersectExecutableName>
+  <IntersectExecutableName Condition="'$(IntersectExecutableName)' == ''">BSC Client</IntersectExecutableName>
+  </PropertyGroup>
 
-  <!--  <PropertyGroup Condition="$(IntersectEditorPlugin)">-->
-  <!--    <IntersectExecutableName Condition="'$(IntersectExecutableName)' == '' AND '$(INTERSECT_EDITOR_EXECUTABLE_NAME)' == ''">$(INTERSECT_EDITOR_EXECUTABLE_NAME)</IntersectExecutableName>-->
-  <!--    <IntersectExecutableName Condition="'$(IntersectExecutableName)' == ''">Intersect Editor</IntersectExecutableName>-->
-  <!--  </PropertyGroup>-->
+  <PropertyGroup Condition="$(IntersectEditorPlugin)">
+  <IntersectExecutableName Condition="'$(IntersectExecutableName)' == '' AND '$(INTERSECT_EDITOR_EXECUTABLE_NAME)' == ''">$(INTERSECT_EDITOR_EXECUTABLE_NAME)</IntersectExecutableName>
+  <IntersectExecutableName Condition="'$(IntersectExecutableName)' == ''">BSC Editor</IntersectExecutableName>
+  </PropertyGroup>
 
-  <!--  <PropertyGroup Condition="$(IntersectServerPlugin)">-->
-  <!--    <IntersectExecutableName Condition="'$(IntersectExecutableName)' == '' AND '$(INTERSECT_SERVER_EXECUTABLE_NAME)' == ''">$(INTERSECT_SERVER_EXECUTABLE_NAME)</IntersectExecutableName>-->
-  <!--    <IntersectExecutableName Condition="'$(IntersectExecutableName)' == ''">Intersect Server</IntersectExecutableName>-->
-  <!--  </PropertyGroup>-->
+  <PropertyGroup Condition="$(IntersectServerPlugin)">
+  <IntersectExecutableName Condition="'$(IntersectExecutableName)' == '' AND '$(INTERSECT_SERVER_EXECUTABLE_NAME)' == ''">$(INTERSECT_SERVER_EXECUTABLE_NAME)</IntersectExecutableName>
+  <IntersectExecutableName Condition="'$(IntersectExecutableName)' == ''">BSC Server</IntersectExecutableName>
+  </PropertyGroup>
 
   <PropertyGroup Condition="'$(IntersectPluginType.ToLower())' != ''">
     <IntersectExecutableDirectoryPath>$(IntersectRepoPath)\Intersect.$(IntersectPluginType)\bin\$(IntersectConfiguration)\$(TargetFramework)</IntersectExecutableDirectoryPath>
