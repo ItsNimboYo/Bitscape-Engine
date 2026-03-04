@@ -16,7 +16,7 @@ public partial class FrmAbout : Form
 
     private void lblWebsite_Click(object sender, EventArgs e)
     {
-        BrowserUtils.Open("https://ascensiongamedev.com");
+        BrowserUtils.Open("https://github.com/ItsNimboYo/Bitscape-Crusade/tree/main");
     }
 
     private void frmAbout_Load(object sender, EventArgs e)

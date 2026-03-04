@@ -1,4 +1,4 @@
-﻿<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <Import Project="AscensionGameDev.Intersect.CommonVariables.targets" />
   <Import Project="FindIntersect.targets" />
 
@@ -15,8 +15,8 @@
   </PropertyGroup>
 
   <Target Name="BeforeBuild">
-    <Error Condition="!Exists('$(IntersectClientDirectoryPath)')" Text="Unable to find path working directory for the Intersect Client, '$(IntersectClientDirectoryPath)' does not exist." />
-    <Error Condition="!Exists('$(IntersectClientExecutablePath)')" Text="Unable to find path to Intersect Client, '$(IntersectClientExecutablePath)' does not exist." />
+    <Error Condition="!Exists('$(IntersectClientDirectoryPath)')" Text="Unable to find path working directory for the BSC Client, '$(IntersectClientDirectoryPath)' does not exist." />
+    <Error Condition="!Exists('$(IntersectClientExecutablePath)')" Text="Unable to find path to BSC Client, '$(IntersectClientExecutablePath)' does not exist." />
   </Target>
 
   <Target Name="CopyBuiltPlugin" AfterTargets="AfterBuild">

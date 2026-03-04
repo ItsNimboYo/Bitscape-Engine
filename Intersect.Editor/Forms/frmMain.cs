@@ -1502,12 +1502,12 @@ public partial class FrmMain : Form
 
     private void toolStripButtonQuestion_Click(object sender, EventArgs e)
     {
-        BrowserUtils.Open("https://www.ascensiongamedev.com/community/forum/53-questions-and-answers/");
+        BrowserUtils.Open("https://github.com/ItsNimboYo/Bitscape-Crusade/tree/main");
     }
 
     private void toolStripButtonBug_Click(object sender, EventArgs e)
     {
-        BrowserUtils.Open("https://github.com/AscensionGameDev/Intersect-Engine/issues/new/choose");
+        BrowserUtils.Open("https://github.com/ItsNimboYo/Bitscape-Crusade/tree/main");
     }
 
     private void UpdateTimeSimulationList()

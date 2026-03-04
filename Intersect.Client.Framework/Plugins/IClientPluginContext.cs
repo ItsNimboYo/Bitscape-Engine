@@ -1,4 +1,4 @@
-﻿using Intersect.Client.Framework.Audio;
+using Intersect.Client.Framework.Audio;
 using Intersect.Client.Framework.Content;
 using Intersect.Client.Framework.Graphics;
 using Intersect.Client.Framework.Input;
@@ -10,7 +10,7 @@ using Intersect.Plugins;
 namespace Intersect.Client.Plugins;
 
 /// <summary>
-/// Declares the plugin API surface for the Intersect client
+/// Declares the plugin API surface for the BSC Client
 /// </summary>
 public interface IClientPluginContext : IPluginContext<IClientPluginContext, IClientLifecycleHelper>
 {

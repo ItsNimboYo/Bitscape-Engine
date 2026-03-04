@@ -798,7 +798,7 @@ public static partial class Strings
         public readonly LocalizedString Support = @"For help, support, and updates, visit: https://www.ascensiongamedev.com";
 
         [JsonProperty(NullValueHandling = NullValueHandling.Ignore)]
-        public readonly LocalizedString Tagline = @"                          Free 2D ORPG engine";
+        public readonly LocalizedString Tagline = @"                          A Retro 2D Fantasy - Explore, Craft, and Conquer!";
 
         [JsonProperty(NullValueHandling = NullValueHandling.Ignore)]
         public readonly LocalizedString Version = @"Version {00}";
@@ -984,7 +984,7 @@ public static partial class Strings
         public readonly LocalizedString Copyright = @"Copyright (c) 2020-2025 Ascension Game Dev, All Rights Reserved";
 
         [JsonProperty(NullValueHandling = NullValueHandling.Ignore)]
-        public readonly LocalizedString Product = @"Intersect Game Engine";
+        public readonly LocalizedString Product = @"Bitscape Crusade";
     }
 
     public sealed partial class PartiesNamespace : LocaleNamespace
@@ -1059,7 +1059,7 @@ public static partial class Strings
     public sealed partial class PasswordResetNotificationNamespace : LocaleNamespace
     {
         [JsonProperty(NullValueHandling = NullValueHandling.Ignore)]
-        public readonly LocalizedString Subject = @"Intersect Game Engine - Password Reset Code";
+        public readonly LocalizedString Subject = @"Bitscape Crusade - Password Reset Code";
     }
 
     public sealed partial class PlayerNamespace : LocaleNamespace
