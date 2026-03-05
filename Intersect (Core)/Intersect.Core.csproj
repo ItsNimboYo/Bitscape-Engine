@@ -6,7 +6,7 @@
 
   <PropertyGroup>
     <PackageId>AscensionGameDev.Intersect.Core</PackageId>
-    <Description>Core Library - Part of the Intersect 2D Game Creation Suite</Description>
+    <Description>Core Library - BSC</Description>
     <PackageLicenseFile>LICENSE.md</PackageLicenseFile>
     <RootNamespace>Intersect</RootNamespace>
     <AssemblyName>Intersect Core</AssemblyName>

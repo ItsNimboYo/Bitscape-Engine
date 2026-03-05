@@ -483,7 +483,7 @@ public partial class FrmMain : Form
         Globals.LoadingMap = mapId;
         if (Globals.CurrentMap == null)
         {
-            Text = @"Intersect Editor";
+            Text = @"BSC Editor";
         }
         else
         {

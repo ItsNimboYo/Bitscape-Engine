@@ -7,7 +7,7 @@
   </PropertyGroup>
 
   <PropertyGroup>
-    <Description>Tests for the Editor - Part of the Intersect 2D Game Creation Suite</Description>
+    <Description>Tests for the Editor - BSC</Description>
     <RootNamespace>Intersect.Tests.Editor</RootNamespace>
     <AssemblyName>Intersect.Tests.Editor</AssemblyName>
   </PropertyGroup>

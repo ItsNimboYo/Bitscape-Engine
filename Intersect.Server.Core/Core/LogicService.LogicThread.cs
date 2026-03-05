@@ -237,7 +237,7 @@ internal sealed partial class LogicService
                         swCps = 0;
 
                         var cyclesPerSecond = ApplicationContext.GetCurrentContext<IServerContext>().LogicService.CyclesPerSecond;
-                        Console.Title = $"Intersect Server - CPS: {cyclesPerSecond}, Players: {players}, Active Maps: {ActiveMapInstances.Count}, Logic Threads: {LogicPool.ActiveThreads} ({LogicPool.InUseThreads} In Use), Pool Queue: {LogicPool.CurrentWorkItemsCount}, Idle: {LogicPool.IsIdle}";
+                        Console.Title = $"BSC Server - CPS: {cyclesPerSecond}, Players: {players}, Active Maps: {ActiveMapInstances.Count}, Logic Threads: {LogicPool.ActiveThreads} ({LogicPool.InUseThreads} In Use), Pool Queue: {LogicPool.CurrentWorkItemsCount}, Idle: {LogicPool.IsIdle}";
 
                         if (Options.Instance.Metrics.Enable)
                         {

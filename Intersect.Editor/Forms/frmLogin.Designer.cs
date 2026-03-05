@@ -149,7 +149,7 @@ namespace Intersect.Editor.Forms
             this.lblGettingStarted.Name = "lblGettingStarted";
             this.lblGettingStarted.Size = new System.Drawing.Size(363, 58);
             this.lblGettingStarted.TabIndex = 8;
-            this.lblGettingStarted.Text = "Getting Started?\r\n1. Start the Intersect Server\r\n2. Open the BSC Client & C" +
+            this.lblGettingStarted.Text = "Getting Started?\r\n1. Start the BSC Server\r\n2. Open the BSC Client & C" +
     "reate an Account\r\n3. Login to that account here to start designing your game!";
             //
             // chkRemember
@@ -183,7 +183,7 @@ namespace Intersect.Editor.Forms
             this.MaximizeBox = false;
             this.Name = "FrmLogin";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "Intersect Editor Login";
+            this.Text = "BSC Editor Login";
             this.Load += new System.EventHandler(this.frmLogin_Load);
             this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.FrmLogin_KeyDown);
             ((System.ComponentModel.ISupportInitialize)(this.picLogo)).EndInit();

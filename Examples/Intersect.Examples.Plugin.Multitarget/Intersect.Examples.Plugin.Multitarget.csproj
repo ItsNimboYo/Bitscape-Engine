@@ -1,7 +1,7 @@
 <Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <Description>Example Multitarget Plugin - Part of the Intersect 2D Game Creation Suite</Description>
+    <Description>Example Multitarget Plugin - BSC</Description>
     <PackageLicenseFile>LICENSE.md</PackageLicenseFile>
     <IntersectClientPlugin>true</IntersectClientPlugin>
     <IntersectServerPlugin>true</IntersectServerPlugin>

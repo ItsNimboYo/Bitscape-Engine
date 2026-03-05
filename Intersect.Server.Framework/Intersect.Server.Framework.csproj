@@ -6,7 +6,7 @@
 
   <PropertyGroup>
     <PackageId>AscensionGameDev.Intersect.Server.Framework</PackageId>
-    <Description>Server Framework - Part of the Intersect 2D Game Creation Suite</Description>
+    <Description>Server Framework - BSC</Description>
     <PackageLicenseFile>LICENSE.md</PackageLicenseFile>
     <RootNamespace>Intersect.Server.Framework</RootNamespace>
     <AssemblyName>Intersect.Server.Framework</AssemblyName>

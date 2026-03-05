@@ -23,9 +23,7 @@ internal static class Program
         try
         {
             var executingAssembly = Assembly.GetExecutingAssembly();
-            Console.WriteLine(
-                $"Starting {executingAssembly.GetMetadataName()} in {Environment.CurrentDirectory}...\n\t{string.Join(' ', args)}"
-            );
+            Console.WriteLine($"Starting Bitscape Crusade Server in {Environment.CurrentDirectory}...\n\t{string.Join(' ', args)}");
 
             ServerContext.ServerContextFactory = (options, logger, packetHelper) =>
                 new FullServerContext(executingAssembly, options, logger, packetHelper);

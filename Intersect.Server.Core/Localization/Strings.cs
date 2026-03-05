@@ -795,7 +795,7 @@ public static partial class Strings
         public readonly LocalizedString ServerStarted = @"Server started. Using UDP Port #{00}.";
 
         [JsonProperty(NullValueHandling = NullValueHandling.Ignore)]
-        public readonly LocalizedString Support = @"For help, support, and updates, visit: https://www.ascensiongamedev.com";
+        public readonly LocalizedString Support = @"For help, support, and updates, visit: https://www.bitscapecrusade.com";
 
         [JsonProperty(NullValueHandling = NullValueHandling.Ignore)]
         public readonly LocalizedString Tagline = @"                          A Retro 2D Fantasy - Explore, Craft, and Conquer!";

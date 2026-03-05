@@ -1,7 +1,7 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <Description>Example Base Plugin - Part of the Intersect 2D Game Creation Suite</Description>
+    <Description>Example Base Plugin - BSC</Description>
     <PackageLicenseFile>LICENSE.md</PackageLicenseFile>
     <RootNamespace>Intersect.Examples.Plugin</RootNamespace>
     <AssemblyName>Intersect.Examples.Plugin</AssemblyName>

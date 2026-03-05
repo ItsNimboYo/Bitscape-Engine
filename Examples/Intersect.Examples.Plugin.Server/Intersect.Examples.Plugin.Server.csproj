@@ -1,7 +1,7 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <Description>Example Server Plugin - Part of the Intersect 2D Game Creation Suite</Description>
+    <Description>Example Server Plugin - BSC</Description>
     <PackageLicenseFile>LICENSE.md</PackageLicenseFile>
     <RootNamespace>Intersect.Examples.Plugin.Server</RootNamespace>
     <AssemblyName>Intersect.Examples.Plugin.Server</AssemblyName>

@@ -7,7 +7,7 @@
 
   <PropertyGroup>
     <PackageId>AscensionGameDev.Intersect.Client.Core</PackageId>
-    <Description>Game Client Core - Part of the Intersect 2D Game Creation Suite</Description>
+    <Description>BSC Client Core</Description>
     <PackageLicenseFile>LICENSE.md</PackageLicenseFile>
     <RootNamespace>Intersect.Client</RootNamespace>
     <AssemblyName>Intersect Client Core</AssemblyName>

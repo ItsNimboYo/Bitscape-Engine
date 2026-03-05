@@ -1579,7 +1579,7 @@ Tick timer saved in server config.json.";
     public partial struct Errors
     {
         public static LocalizedString UnhandledError =
-            @"The Intersect Editor has encountered an error and must close. Error information can be found in logs/errors.log";
+            @"The BSC Editor has encountered an error and must close. Error information can be found in logs/errors.log";
 
         public static LocalizedString disconnected = @"Disconnected!";
 
@@ -1600,12 +1600,12 @@ Tick timer saved in server config.json.";
         public static LocalizedString InvalidInputXCaption = @"Invalid Input - {0}";
 
         public static LocalizedString importfailed =
-            @"Cannot import map. Currently selected map is not an Intersect map file or was exported with a different version of the Intersect editor!";
+            @"Cannot import map. Currently selected map is not an BSC map file or was exported with a different version of the BSC editor!";
 
         public static LocalizedString importfailedcaption = @"Failed to import map!";
 
         public static LocalizedString resourcesnotfound =
-            @"The resources directory could not be found! Intersect will now close.";
+            @"The resources directory could not be found! BSC will now close.";
 
         public static LocalizedString resourcesnotfoundtitle = @"Resources not found!";
 
@@ -4046,11 +4046,11 @@ Tick timer saved in server config.json.";
         public static LocalizedString password = @"Password: ";
 
         public static LocalizedString raptr =
-            @"Please close AMD Gaming Evolved before logging into the Intersect editor.";
+            @"Please close AMD Gaming Evolved before logging into the BSC editor.";
 
         public static LocalizedString rememberme = @"Remember Me";
 
-        public static LocalizedString title = @"Intersect Editor Login";
+        public static LocalizedString title = @"BSC Editor Login";
 
         public static LocalizedString username = @"Username: ";
 
@@ -4185,7 +4185,7 @@ Tick timer saved in server config.json.";
 
         public static LocalizedString timeeditor = @"Time Editor";
 
-        public static LocalizedString title = @"Intersect Editor - {00}";
+        public static LocalizedString title = @"BSC Editor - {00}";
 
         public static LocalizedString tools = @"Tools";
 
@@ -5674,7 +5674,7 @@ Negative values for time to flow backwards.";
     public partial struct Update
     {
 
-        public static LocalizedString Title = @"Intersect Editor - Updating";
+        public static LocalizedString Title = @"BSC Editor - Updating";
 
         public static LocalizedString Checking = @"Checking for updates, please wait!";
 

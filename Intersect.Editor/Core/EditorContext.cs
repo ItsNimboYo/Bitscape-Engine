@@ -1,4 +1,4 @@
-﻿using System.Reflection;
+using System.Reflection;
 using Intersect.Core;
 using Intersect.Plugins.Helpers;
 using Intersect.Plugins.Interfaces;
@@ -16,7 +16,7 @@ public class EditorContext : IApplicationContext<DummyStartupOptions>
     {
         ApplicationContext.Context.Value = this;
 
-        Name = entryAssembly.GetName().Name ?? "Intersect Editor";
+        Name = entryAssembly.GetName().Name ?? "BSC Editor";
         PacketHelper = packetHelper;
         Logger = logger;
         StartupOptions = new DummyStartupOptions();

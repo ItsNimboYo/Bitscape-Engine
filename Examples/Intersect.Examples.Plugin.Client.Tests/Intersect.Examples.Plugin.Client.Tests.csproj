@@ -1,7 +1,7 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <Description>Example Client Plugin Tests - Part of the Intersect 2D Game Creation Suite</Description>
+    <Description>Example Client Plugin Tests - BSC</Description>
     <PackageLicenseFile>LICENSE.md</PackageLicenseFile>
     <RootNamespace>Intersect.Examples.Plugin.Client.Tests</RootNamespace>
     <AssemblyName>Intersect.Examples.Plugin.Client.Tests</AssemblyName>
