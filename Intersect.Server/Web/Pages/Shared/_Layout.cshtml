@@ -1,4 +1,4 @@
-﻿@using Intersect.Server.Web.Extensions
+@using Intersect.Server.Web.Extensions
 @using Microsoft.AspNetCore.Mvc.TagHelpers
 <!DOCTYPE html>
 <html lang="en">
@@ -31,6 +31,14 @@
         body {
             display:  none;
         }
+
+        :root {
+            --bsc-gold: #C8A020;
+            --bsc-blue: #1B2A6B;
+            --bsc-crimson: #8B0000;
+            --bsc-dark: #0D1117;
+            --bsc-navy: #162040;
+        }
     </style>
 
     <link rel="stylesheet" href="~/css/theme.css" asp-append-version="true"/>
@@ -43,9 +51,13 @@
 </head>
 <body>
 <header>
-    <h1>
-        <a href="/">@ViewData[nameof(Options.GameName)]</a>
-    </h1>
+        <h1>
+            <a href="/">
+                <img src="~/images/bsc-logo.png"
+                     alt="Bitscape Crusade"
+                     height="80" />
+            </a>
+        </h1>
     <nav>
         <ul>
             @if (User.IsEditor())

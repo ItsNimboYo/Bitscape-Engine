@@ -26,7 +26,7 @@ public partial class FrmLogin : Form
     public BeginEditorLoop EditorLoopDelegate;
 
     private readonly bool _authenticating;
-    
+
     private bool _optionsLoaded;
     private string _savedPassword = string.Empty;
     private bool _loginPending;
@@ -69,12 +69,12 @@ public partial class FrmLogin : Form
         {
             return;
         }
-        
+
         GameContentManager.CheckForResources();
         Database.LoadOptions();
         _optionsLoaded = true;
         EditorLoopDelegate = Main.StartLoop;
-        
+
         Database.InitMapCache();
     }
 
@@ -117,7 +117,7 @@ public partial class FrmLogin : Form
 
             return;
         }
-        
+
         if (!_optionsLoaded)
         {
             return;
@@ -333,4 +333,8 @@ public partial class FrmLogin : Form
         }
     }
 
+    private void picLogo_Click(object sender, EventArgs e)
+    {
+
+    }
 }

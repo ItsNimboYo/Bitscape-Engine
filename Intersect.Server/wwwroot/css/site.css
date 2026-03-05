@@ -377,3 +377,80 @@ input:focus+label
 {
 	transform: translateY(-1.65em) scale(0.8);
 }
+/* BSC Header Styling */
+header {
+	background: linear-gradient( to right, var(--bsc-dark), var(--bsc-navy) );
+	border-bottom: 2px solid var(--bsc-gold);
+	padding: 10px 20px;
+}
+
+	header h1 a {
+		color: var(--bsc-gold);
+		text-decoration: none;
+		font-weight: bold;
+	}
+
+/* BSC Navigation */
+nav ul {
+	list-style: none;
+	display: flex;
+	gap: 20px;
+}
+
+nav a {
+	color: var(--bsc-gold) !important;
+	text-decoration: none;
+	font-weight: bold;
+	transition: color 0.2s;
+}
+
+	nav a:hover {
+		color: #ffffff !important;
+	}
+
+/* BSC Leaderboard Table */
+table {
+	width: 100%;
+	border-collapse: collapse;
+	background: var(--bsc-navy);
+	border: 1px solid var(--bsc-gold);
+}
+
+th {
+	background: var(--bsc-blue);
+	color: var(--bsc-gold);
+	padding: 12px;
+	text-align: left;
+	border-bottom: 2px solid var(--bsc-gold);
+}
+
+td {
+	padding: 10px 12px;
+	border-bottom: 1px solid #2a3a6b;
+	color: #ffffff;
+}
+
+tr:hover {
+	background: rgba(200, 160, 32, 0.1);
+}
+
+/* BSC Footer */
+footer {
+	background: var(--bsc-dark);
+	border-top: 2px solid var(--bsc-gold);
+	color: var(--bsc-gold);
+	padding: 15px;
+	text-align: center;
+}
+
+/* BSC Buttons */
+.btn-primary {
+	background: var(--bsc-gold) !important;
+	border-color: var(--bsc-gold) !important;
+	color: var(--bsc-dark) !important;
+	font-weight: bold;
+}
+
+	.btn-primary:hover {
+		background: #E8C84A !important;
+	}
