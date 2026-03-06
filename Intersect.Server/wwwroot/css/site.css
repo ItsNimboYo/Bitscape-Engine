@@ -454,3 +454,277 @@ footer {
 	.btn-primary:hover {
 		background: #E8C84A !important;
 	}
+
+/* BSC Leaderboard Layout */
+article.page.list {
+	max-width: 800px;
+	margin: 20px auto;
+	padding: 0 20px;
+}
+
+	article.page.list h2 {
+		text-align: center;
+		color: #C8A020;
+		border-bottom: 2px solid #C8A020;
+		padding-bottom: 10px;
+	}
+
+/* Player Card Styling */
+article.player.card {
+	display: flex;
+	background: #162040;
+	border: 1px solid #C8A020;
+	border-radius: 4px;
+	margin-bottom: 10px;
+	overflow: hidden;
+}
+
+/* Rank Column */
+section.column.rank {
+	background: #1B2A6B;
+	color: #C8A020;
+	font-size: 1.5rem;
+	font-weight: bold;
+	min-width: 60px;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	padding: 20px;
+	border-right: 2px solid #C8A020;
+}
+
+/* Avatar */
+img.avatar {
+	width: 80px !important;
+	height: 80px !important;
+	image-rendering: pixelated;
+}
+
+/* Stats */
+section.column.body {
+	padding: 10px 15px;
+	flex: 1;
+}
+
+	section.column.body h3 {
+		color: #C8A020;
+		margin: 0 0 8px 0;
+	}
+/* Fix rank bar taking full width */
+article.player.card {
+	display: flex !important;
+	flex-direction: row !important;
+	align-items: stretch !important;
+}
+
+section.column.rank {
+	min-width: 60px !important;
+	max-width: 60px !important;
+	width: 60px !important;
+	align-self: stretch !important;
+}
+
+/* Fix body section layout */
+section.column.body {
+	display: flex !important;
+	flex-direction: column !important;
+	padding: 10px 15px !important;
+	flex: 1 !important;
+}
+
+	/* Fix row inside body */
+	section.column.body section.row {
+		display: flex !important;
+		flex-direction: row !important;
+		align-items: center !important;
+		gap: 15px !important;
+	}
+
+		/* Fix stats layout */
+		section.column.body section.row
+		section.column {
+			display: flex !important;
+			flex-direction: column !important;
+			gap: 4px !important;
+		}
+
+			section.column.body section.row
+			section.column span {
+				display: block !important;
+				color: #cccccc !important;
+				font-size: 0.9rem !important;
+			}
+/* Fix Header - Logo Center, Nav Right */
+header {
+	display: flex !important;
+	align-items: center !important;
+	justify-content: space-between !important;
+	padding: 10px 20px !important;
+	position: relative !important;
+}
+
+	header h1 {
+		position: absolute !important;
+		left: 50% !important;
+		transform: translateX(-50%) !important;
+		margin: 0 !important;
+	}
+
+	header nav {
+		margin-left: auto !important;
+	}
+
+		/* Fix Nav items to top right */
+		header nav ul {
+			display: flex !important;
+			flex-direction: row !important;
+			align-items: center !important;
+			gap: 15px !important;
+			list-style: none !important;
+			margin: 0 !important;
+			padding: 0 !important;
+		}
+/* Fix card to be proper row layout */
+article.player.card {
+	display: grid !important;
+	grid-template-columns: 60px 1fr !important;
+	border: 1px solid #C8A020 !important;
+	background: #162040 !important;
+	margin-bottom: 10px !important;
+	border-radius: 4px !important;
+	overflow: hidden !important;
+	min-height: 100px !important;
+}
+
+/* Name above avatar/stats row */
+section.column.body {
+	display: flex !important;
+	flex-direction: column !important;
+	padding: 10px 15px !important;
+}
+
+	section.column.body h3 {
+		color: #C8A020 !important;
+		margin: 0 0 8px 0 !important;
+		font-size: 1.1rem !important;
+	}
+
+	section.column.body > section.row {
+		display: flex !important;
+		flex-direction: row !important;
+		align-items: flex-start !important;
+		gap: 15px !important;
+	}
+
+		/* Stats vertical layout */
+		section.column.body > section.row > section.column {
+			display: flex !important;
+			flex-direction: column !important;
+			gap: 3px !important;
+			justify-content: center !important;
+		}
+
+			section.column.body > section.row > section.column > span {
+				display: block !important;
+				color: #cccccc !important;
+				font-size: 0.85rem !important;
+				line-height: 1.4 !important;
+			}
+/* Complete Player Card Fix */
+article.player.card {
+	display: flex !important;
+	flex-direction: row !important;
+	align-items: stretch !important;
+	border: 1px solid #C8A020 !important;
+	background: #162040 !important;
+	margin-bottom: 10px !important;
+	border-radius: 4px !important;
+	overflow: hidden !important;
+	min-height: 100px !important;
+	width: 100% !important;
+}
+
+section.column.rank {
+	display: flex !important;
+	align-items: center !important;
+	justify-content: center !important;
+	background: #1B2A6B !important;
+	border-right: 2px solid #C8A020 !important;
+	min-width: 60px !important;
+	max-width: 60px !important;
+	color: #C8A020 !important;
+	font-size: 1.5rem !important;
+	font-weight: bold !important;
+	padding: 10px !important;
+	flex-shrink: 0 !important;
+}
+
+section.column.body {
+	display: flex !important;
+	flex-direction: column !important;
+	padding: 10px 15px !important;
+	flex: 1 !important;
+	min-width: 0 !important;
+}
+
+	section.column.body h3 {
+		color: #C8A020 !important;
+		margin: 0 0 8px 0 !important;
+	}
+
+	section.column.body > section.row {
+		display: flex !important;
+		flex-direction: row !important;
+		align-items: center !important;
+		gap: 15px !important;
+	}
+
+		section.column.body > section.row img.avatar {
+			width: 80px !important;
+			height: 80px !important;
+			image-rendering: pixelated !important;
+			border: 2px solid #C8A020 !important;
+		}
+
+		section.column.body > section.row > section.column {
+			display: flex !important;
+			flex-direction: column !important;
+			gap: 4px !important;
+		}
+
+			section.column.body > section.row > section.column span {
+				display: block !important;
+				color: #cccccc !important;
+				font-size: 0.85rem !important;
+			}
+/* Fix stats to stack vertically */
+span.column {
+	display: flex !important;
+	flex-direction: column !important;
+	gap: 4px !important;
+	justify-content: center !important;
+}
+
+	span.column span.row {
+		display: block !important;
+		color: #cccccc !important;
+		font-size: 0.85rem !important;
+		white-space: nowrap !important;
+	}
+
+/* Hide the material icon */
+svg.material {
+	display: none !important;
+}
+
+/* Bigger avatar */
+span.avatar-container {
+	flex-shrink: 0 !important;
+}
+
+	span.avatar-container img.avatar {
+		width: 80px !important;
+		height: 80px !important;
+		image-rendering: pixelated !important;
+		display: block !important;
+	}
