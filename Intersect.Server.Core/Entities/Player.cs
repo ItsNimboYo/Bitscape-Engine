@@ -80,6 +80,40 @@ public partial class Player : Entity
 
     public long Exp { get; set; }
 
+    // ---- BSC Skill System ----
+    // Combat Skills
+    public long MeleeExp { get; set; }
+    public int MeleeLevel { get; set; }
+
+    public long ShieldingExp { get; set; }
+    public int ShieldingLevel { get; set; }
+
+    public long MagicExp { get; set; }
+    public int MagicLevel { get; set; }
+
+    public long DistanceExp { get; set; }
+    public int DistanceLevel { get; set; }
+
+    // Profession Skills
+    public long MiningExp { get; set; }
+    public int MiningLevel { get; set; }
+
+    public long SmithingExp { get; set; }
+    public int SmithingLevel { get; set; }
+
+    public long WoodcuttingExp { get; set; }
+    public int WoodcuttingLevel { get; set; }
+
+    public long CookingExp { get; set; }
+    public int CookingLevel { get; set; }
+
+    public long FishingExp { get; set; }
+    public int FishingLevel { get; set; }
+
+    public long CraftingExp { get; set; }
+    public int CraftingLevel { get; set; }
+    // ---- End BSC Skill System ----
+
     public int StatPoints { get; set; }
 
     [Column("Equipment"), JsonIgnore]
