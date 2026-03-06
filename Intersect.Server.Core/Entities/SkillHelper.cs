@@ -1,5 +1,7 @@
 using System;
 using Intersect.Enums;
+using Intersect.Framework.Core.GameObjects.PlayerClass;
+using Intersect.Server.Entities;
 
 namespace Intersect.Server.Entities
 {
@@ -76,16 +78,20 @@ namespace Intersect.Server.Entities
         /// Returns true if player leveled up!
         /// </summary>
         public static bool AwardSkillXp(
-            Player player,
-            SkillType skill,
-            long xpAmount)
+    Player player,
+    SkillType skill,
+    long xpAmount)
         {
+            // BSC - Apply class multiplier
+            double multiplier = GetClassXpMultiplier(player, skill);
+            long finalXp = (long)(xpAmount * multiplier);
+
             // Get current XP and Level
             long currentXp = GetSkillXp(player, skill);
             int currentLevel = GetSkillLevel(player, skill);
 
-            // Add XP
-            long newXp = currentXp + xpAmount;
+            // Add XP with multiplier applied
+            long newXp = currentXp + finalXp;
             SetSkillXp(player, skill, newXp);
 
             // Check for level up
@@ -93,7 +99,7 @@ namespace Intersect.Server.Entities
             if (newLevel > currentLevel)
             {
                 SetSkillLevel(player, skill, newLevel);
-                return true; // Leveled up!
+                return true;
             }
             return false;
         }
@@ -209,6 +215,135 @@ namespace Intersect.Server.Entities
                    player.CookingLevel +
                    player.FishingLevel +
                    player.CraftingLevel;
+        }
+        // ---- BSC Combat Formulas ----
+
+        /// <summary>
+        /// Calculate melee max hit
+        /// Formula: (MeleeLevel * 0.8) + (WeaponDamage * 0.5)
+        /// </summary>
+        public static int CalculateMeleeDamage(
+            Player player, int weaponDamage)
+        {
+            int meleeLevel = player.MeleeLevel < 1
+                ? 1 : player.MeleeLevel;
+            double maxHit = (meleeLevel * 0.8) +
+                            (weaponDamage * 0.5);
+
+            // Random roll between 0 and max hit
+            // (Tibia style random damage)
+            var rng = new Random();
+            int minHit = (int)(maxHit * 0.3);
+            int maxHitInt = (int)Math.Ceiling(maxHit);
+
+            return rng.Next(minHit, maxHitInt + 1);
+        }
+
+        /// <summary>
+        /// Calculate magic max hit
+        /// Formula: (MagicLevel * 0.8) + (SpellDamage * 0.5)
+        /// </summary>
+        public static int CalculateMagicDamage(
+            Player player, int spellDamage)
+        {
+            int magicLevel = player.MagicLevel < 1
+                ? 1 : player.MagicLevel;
+            double maxHit = (magicLevel * 0.8) +
+                            (spellDamage * 0.5);
+
+            var rng = new Random();
+            int minHit = (int)(maxHit * 0.3);
+            int maxHitInt = (int)Math.Ceiling(maxHit);
+
+            return rng.Next(minHit, maxHitInt + 1);
+        }
+
+        /// <summary>
+        /// Calculate distance max hit
+        /// Formula: (DistanceLevel * 0.8) + (WeaponDamage * 0.5)
+        /// </summary>
+        public static int CalculateDistanceDamage(
+            Player player, int weaponDamage)
+        {
+            int distanceLevel = player.DistanceLevel < 1
+                ? 1 : player.DistanceLevel;
+            double maxHit = (distanceLevel * 0.8) +
+                            (weaponDamage * 0.5);
+
+            var rng = new Random();
+            int minHit = (int)(maxHit * 0.3);
+            int maxHitInt = (int)Math.Ceiling(maxHit);
+
+            return rng.Next(minHit, maxHitInt + 1);
+        }
+
+        /// <summary>
+        /// Calculate defense reduction
+        /// Formula: ShieldingLevel * 0.3
+        /// Returns damage after reduction
+        /// </summary>
+        public static int CalculateDefenseReduction(
+            Player player, int incomingDamage)
+        {
+            int shieldingLevel = player.ShieldingLevel < 1
+                ? 1 : player.ShieldingLevel;
+            double reduction = shieldingLevel * 0.3;
+
+            // Cap reduction at 75% max
+            reduction = Math.Min(reduction,
+                incomingDamage * 0.75);
+
+            int finalDamage = incomingDamage - (int)reduction;
+
+            // Always take at least 1 damage
+            return Math.Max(1, finalDamage);
+        }
+
+        /// <summary>
+        /// Calculate XP reward based on damage dealt
+        /// More damage = more XP
+        /// </summary>
+        public static long CalculateCombatXp(
+            int damageDealt, int enemyLevel)
+        {
+            // Base XP from damage
+            long baseXp = damageDealt * 4;
+
+            // Bonus XP for higher level enemies
+            double levelMultiplier = 1.0 +
+                (enemyLevel * 0.1);
+
+            return (long)(baseXp * levelMultiplier);
+        }
+        public static double GetClassXpMultiplier(
+    Player player, SkillType skill)
+        {
+            string className = ClassDescriptor
+                .Get(player.ClassId)?.Name ?? "Warrior";
+
+            return (className, skill) switch
+            {
+                // Warrior - Melee tank
+                ("Warrior", SkillType.Melee) => 1.0,
+                ("Warrior", SkillType.Shielding) => 1.0,
+                ("Warrior", SkillType.Distance) => 0.3,
+                ("Warrior", SkillType.Magic) => 0.2,
+
+                // Archer - Distance fighter
+                ("Archer", SkillType.Melee) => 0.5,
+                ("Archer", SkillType.Shielding) => 0.6,
+                ("Archer", SkillType.Distance) => 1.0,
+                ("Archer", SkillType.Magic) => 0.5,
+
+                // Mage - Magic specialist
+                ("Mage", SkillType.Melee) => 0.2,
+                ("Mage", SkillType.Shielding) => 0.3,
+                ("Mage", SkillType.Distance) => 0.3,
+                ("Mage", SkillType.Magic) => 1.0,
+
+                // Default fallback
+                _ => 1.0
+            };
         }
     }
 }

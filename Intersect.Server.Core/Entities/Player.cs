@@ -1661,9 +1661,45 @@ public partial class Player : Entity
             return;
         }
 
-        base.TryAttack(target, projectile, parentSpell, parentItem, projectileDir);
-    }
+     base.TryAttack(target, projectile,
+        parentSpell, parentItem, projectileDir);
 
+        //BSC Distance Fighting System
+        if (parentSpell == null && parentItem != null)
+            {
+                // Calculate BSC distance damage
+                int distanceDamage = SkillHelper
+                    .CalculateDistanceDamage(
+                        this, parentItem.Scaling);
+
+                // Set damage value for base to use
+                parentItem.Damage = distanceDamage;
+
+                long xpAmount;
+                if (target is Npc npcTarget)
+                {
+                    xpAmount = SkillHelper
+                        .CalculateCombatXp(
+                            distanceDamage, npcTarget.Level);
+                }
+                else
+                {
+                    xpAmount = distanceDamage * 4;
+                }
+
+                bool distanceLevelUp = SkillHelper
+                    .AwardSkillXp(
+                        this, SkillType.Distance, xpAmount);
+
+                if (distanceLevelUp)
+                {
+                    PacketSender.SendChatMsg(
+                        this,
+                        $"Your Distance skill is now level {DistanceLevel}!",
+                        ChatMessageType.Experience);
+                }
+            }
+    }
     protected override void ReactToDamage(Vital vital)
     {
         if (IsDead || IsDisposed)
@@ -1679,7 +1715,22 @@ public partial class Player : Entity
                 EnqueueStartCommonEvent(trigger);
             }
         }
+        // BSC - Award Shielding XP when taking damage
+        if (vital == Vital.Health)
+        {
+            bool shieldLevelUp = SkillHelper.AwardSkillXp(
+                this,
+                SkillType.Shielding,
+                2); // Small flat XP per hit
 
+            if (shieldLevelUp)
+            {
+                PacketSender.SendChatMsg(
+                    this,
+                    $"Your Shielding skill is now level {ShieldingLevel}!",
+                    ChatMessageType.Experience);
+            }
+        }
         base.ReactToDamage(vital);
     }
 
@@ -1711,6 +1762,53 @@ public partial class Player : Entity
         }
 
         base.TryAttack(target, spellDescriptor, onHitTrigger, trapTrigger);
+
+        // BSC - Magic skill based damage + XP
+        base.TryAttack(target, spellDescriptor,
+    onHitTrigger, trapTrigger);
+
+        if (spellDescriptor != null)
+        {
+            int magicDamage = SkillHelper
+                .CalculateMagicDamage(
+                    this, spellDescriptor.Combat.Scaling);
+
+            // BSC damage hits EVERYONE ← Back to double call!
+            base.TryAttack(
+                target,
+                magicDamage,
+                DamageType.Magic,
+                (Stat)0,
+                100,
+                10,
+                1.5,
+                null, null, null);
+
+            // XP for everyone
+            long xpAmount;
+            if (target is Npc npcTarget)
+            {
+                xpAmount = SkillHelper
+                    .CalculateCombatXp(
+                        magicDamage, npcTarget.Level);
+            }
+            else
+            {
+                xpAmount = magicDamage * 4;
+            }
+
+            bool magicLevelUp = SkillHelper
+                .AwardSkillXp(
+                    this, SkillType.Magic, xpAmount);
+
+            if (magicLevelUp)
+            {
+                PacketSender.SendChatMsg(
+                    this,
+                    $"Your Magic skill is now level {MagicLevel}!",
+                    ChatMessageType.Experience);
+            }
+        }
     }
 
     /// <summary>
@@ -1806,24 +1904,93 @@ public partial class Player : Entity
 
         if (weapon != null)
         {
+            // BSC - Calculate Melee skill based damage
+            int bscDamage = SkillHelper
+                .CalculateMeleeDamage(
+                    this, weapon.Damage);
+
             base.TryAttack(
-                target, weapon.Damage, (DamageType)weapon.DamageType, (Stat)weapon.ScalingStat, weapon.Scaling,
-                weapon.CritChance, weapon.CritMultiplier, null, null, weapon
-            );
-        }
-        else
-        {
-            var classBase = ClassDescriptor.Get(ClassId);
-            if (classBase != null)
+                target, bscDamage,
+                (DamageType)weapon.DamageType,
+                (Stat)weapon.ScalingStat,
+                weapon.Scaling,
+                weapon.CritChance,
+                weapon.CritMultiplier,
+                null, null, weapon);
+
+            // BSC - Award Melee XP
+            if (target is Npc npc)
             {
-                base.TryAttack(
-                    target, classBase.Damage, (DamageType)classBase.DamageType, (Stat)classBase.ScalingStat,
-                    classBase.Scaling, classBase.CritChance, classBase.CritMultiplier
-                );
+                long xpAmount = SkillHelper
+                    .CalculateCombatXp(
+                        bscDamage, npc.Level);
+                bool leveledUp = SkillHelper
+                    .AwardSkillXp(
+                        this,
+                        SkillType.Melee,
+                        xpAmount);
+                if (leveledUp)
+                {
+                    PacketSender.SendChatMsg(
+                        this,
+                        $"Your Melee skill " +
+                        $"is now level " +
+                        $"{MeleeLevel}!",
+                        ChatMessageType
+                            .Experience);
+                }
             }
-            else
+    
+            else // PVP - Still award Melee XP
             {
-                base.TryAttack(target, 1, DamageType.Physical, Enums.Stat.Attack, 100, 10, 1.5);
+                long pvpXp = bscDamage * 4;
+                bool leveledUp = SkillHelper
+                    .AwardSkillXp(
+                        this, SkillType.Melee, pvpXp);
+
+                if (leveledUp)
+                {
+                    PacketSender.SendChatMsg(
+                        this,
+                        $"Your Melee skill is now level {MeleeLevel}!",
+                        ChatMessageType.Experience);
+                }
+            }
+        }
+        else // BSC - Unarmed Combat
+        {
+            int unarmedDamage = SkillHelper
+                .CalculateMeleeDamage(this, 5);
+
+            base.TryAttack(
+                target, unarmedDamage,
+                DamageType.Physical,
+                (Stat)0,
+                100,
+                10,
+                1.5,
+                null, null, null);
+
+            if (target is Npc npc2)
+            {
+                long xpAmount = SkillHelper
+                    .CalculateCombatXp(
+                        unarmedDamage, npc2.Level);
+                bool leveledUp2 = SkillHelper
+                    .AwardSkillXp(
+                        this,
+                        SkillType.Melee,
+                        xpAmount);
+                if (leveledUp2)
+                {
+                    PacketSender.SendChatMsg(
+                        this,
+                        $"Your Melee skill " +
+                        $"is now level " +
+                        $"{MeleeLevel}!",
+                        ChatMessageType
+                            .Experience);
+                }
             }
         }
     }
