@@ -3,7 +3,9 @@ using Intersect.Client.Core;
 using Intersect.Client.Framework.File_Management;
 using Intersect.Client.Framework.Gwen;
 using Intersect.Client.Framework.Gwen.Control;
+using Intersect.Client.Framework.Gwen.Control.Layout;
 using Intersect.Client.General;
+using Intersect.Framework.Core.GameObjects.PlayerClass;
 
 namespace Intersect.Client.Interface.Game.Skills
 {
@@ -17,9 +19,12 @@ namespace Intersect.Client.Interface.Game.Skills
             : base(gameCanvas, "Skills", false, "SkillsWindow")
         {
             DisableResizing();
-            SetSize(320, 360);
+            SetSize(360, 420);
             SetPosition(500, 180);
-
+            Title = "SKILLS";
+            TitleLabel.Font = GameContentManager.Current.GetFont("sourcesansproblack");
+            TitleLabel.FontSize = 16;
+          
             _skillsScroller = new ScrollControl(this, nameof(_skillsScroller))
             {
                 Dock = Pos.Fill,
@@ -31,20 +36,11 @@ namespace Intersect.Client.Interface.Game.Skills
             {
                 Dock = Pos.Fill,
                 Font = GameContentManager.Current.GetFont("sourcesansproblack"),
-                FontSize = 12,
-                Padding = new Padding(16),
+                FontSize = 13,
+                Padding = new Padding(20),
             };
-        }
-public void ToggleHidden()
-        {
-            if (IsHidden)
-            {
-                Show();
-            }
-            else
-            {
-                Hide();
-            }
+
+            Hide();
         }
 
         public void SetLocation(int x, int y)
@@ -62,27 +58,27 @@ public void ToggleHidden()
                 return;
             }
 
+            var playerClass = ClassDescriptor.GetName(Globals.Me.Class);
+
             var sb = new StringBuilder();
 
-            sb.AppendLine($"=== {Globals.Me.Name} - Level {Globals.Me.Level} ===");
-            sb.AppendLine("");
-
-            sb.AppendLine("Combat Skills");
+            sb.AppendLine($"=== {Globals.Me.Name} - Level {Globals.Me.Level} {playerClass} ===");
             sb.AppendLine();
-            sb.AppendLine($"Melee: {Globals.Me.MeleeLevel}");
-            sb.AppendLine($"Shielding: {Globals.Me.ShieldingLevel}");
-            sb.AppendLine($"Magic: {Globals.Me.MagicLevel}");
-            sb.AppendLine($"Distance: {Globals.Me.DistanceLevel}");
+            sb.AppendLine("COMBAT SKILLS");
+            sb.AppendLine("----------------------");
+            sb.AppendLine($"> Melee       : {Globals.Me.MeleeLevel}");
+            sb.AppendLine($"> Shielding   : {Globals.Me.ShieldingLevel}");
+            sb.AppendLine($"> Magic       : {Globals.Me.MagicLevel}");
+            sb.AppendLine($"> Distance    : {Globals.Me.DistanceLevel}");
             sb.AppendLine();
-
-            sb.AppendLine("Profession Skills");
-            sb.AppendLine();
-            sb.AppendLine($"Mining: {Globals.Me.MiningLevel}");
-            sb.AppendLine($"Smithing: {Globals.Me.SmithingLevel}");
-            sb.AppendLine($"Woodcutting: {Globals.Me.WoodcuttingLevel}");
-            sb.AppendLine($"Fishing: {Globals.Me.FishingLevel}");
-            sb.AppendLine($"Cooking: {Globals.Me.CookingLevel}");
-            sb.AppendLine($"Crafting: {Globals.Me.CraftingLevel}");
+            sb.AppendLine("PROFESSION SKILLS");
+            sb.AppendLine("----------------------");
+            sb.AppendLine($"> Mining      : {Globals.Me.MiningLevel}");
+            sb.AppendLine($"> Smithing    : {Globals.Me.SmithingLevel}");
+            sb.AppendLine($"> Woodcutting : {Globals.Me.WoodcuttingLevel}");
+            sb.AppendLine($"> Fishing     : {Globals.Me.FishingLevel}");
+            sb.AppendLine($"> Cooking     : {Globals.Me.CookingLevel}");
+            sb.AppendLine($"> Crafting    : {Globals.Me.CraftingLevel}");
 
             var newText = sb.ToString();
             if (_lastText == newText)

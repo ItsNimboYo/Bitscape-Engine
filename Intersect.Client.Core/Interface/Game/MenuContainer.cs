@@ -253,8 +253,8 @@ public partial class MenuContainer : Panel
         {
             if (_characterWindow.IsVisible())
             {
-                var skillsX = _characterWindow.WindowX;
-                var skillsY = _characterWindow.WindowY - Interface.GameUi.SkillsWindow.WindowHeight - 8;
+                var skillsX = _characterWindow.WindowX - 6;
+                var skillsY = _characterWindow.WindowY - Interface.GameUi.SkillsWindow.WindowHeight - 12;
 
                 Interface.GameUi.SkillsWindow.SetLocation(skillsX, skillsY);
                 Interface.GameUi.SkillsWindow.Show();
