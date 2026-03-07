@@ -114,6 +114,27 @@ public partial class Player : Entity, IPlayer
 
     public int StatPoints { get; set; } = 0;
 
+    // BSC - Combat Skills
+    public int MeleeLevel { get; set; } = 1;
+    public long MeleeExp { get; set; } = 0;
+
+    public int ShieldingLevel { get; set; } = 1;
+    public long ShieldingExp { get; set; } = 0;
+
+    public int MagicLevel { get; set; } = 1;
+    public long MagicExp { get; set; } = 0;
+
+    public int DistanceLevel { get; set; } = 1;
+    public long DistanceExp { get; set; } = 0;
+
+    // BSC - Profession Skills
+    public int MiningLevel { get; set; } = 1;
+    public int SmithingLevel { get; set; } = 1;
+    public int WoodcuttingLevel { get; set; } = 1;
+    public int CookingLevel { get; set; } = 1;
+    public int FishingLevel { get; set; } = 1;
+    public int CraftingLevel { get; set; } = 1;
+
     public EntityBox? TargetBox { get; set; }
 
     public PlayerStatusWindow? StatusWindow { get; set; }
@@ -354,6 +375,17 @@ public partial class Player : Entity, IPlayer
         CombatTimer = playerPacket.CombatTimeRemaining + Timing.Global.Milliseconds;
         Guild = playerPacket.Guild;
         Rank = playerPacket.GuildRank;
+        // BSC - Load skill levels from packet
+        MeleeLevel = playerPacket.MeleeLevel;
+        ShieldingLevel = playerPacket.ShieldingLevel;
+        MagicLevel = playerPacket.MagicLevel;
+        DistanceLevel = playerPacket.DistanceLevel;
+        MiningLevel = playerPacket.MiningLevel;
+        SmithingLevel = playerPacket.SmithingLevel;
+        WoodcuttingLevel = playerPacket.WoodcuttingLevel;
+        CookingLevel = playerPacket.CookingLevel;
+        FishingLevel = playerPacket.FishingLevel;
+        CraftingLevel = playerPacket.CraftingLevel;
 
         if (playerPacket.Equipment != null)
         {

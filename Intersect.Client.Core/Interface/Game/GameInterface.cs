@@ -1,8 +1,10 @@
 using Intersect.Client.Framework.Gwen.Control;
+using Intersect.Client.Framework.Gwen.Input;
 using Intersect.Client.General;
 using Intersect.Client.Interface.Game.Admin;
 using Intersect.Client.Interface.Game.Bag;
 using Intersect.Client.Interface.Game.Bank;
+using Intersect.Client.Interface.Game.Character;
 using Intersect.Client.Interface.Game.Chat;
 using Intersect.Client.Interface.Game.Crafting;
 using Intersect.Client.Interface.Game.DescriptionWindows;
@@ -10,6 +12,7 @@ using Intersect.Client.Interface.Game.EntityPanel;
 using Intersect.Client.Interface.Game.Hotbar;
 using Intersect.Client.Interface.Game.Inventory;
 using Intersect.Client.Interface.Game.Shop;
+using Intersect.Client.Interface.Game.Skills;
 using Intersect.Client.Interface.Game.Trades;
 using Intersect.Client.Interface.Menu;
 using Intersect.Client.Interface.Shared;
@@ -35,6 +38,8 @@ public partial class GameInterface : MutableInterface
     private AdminWindow? mAdminWindow;
 
     private BagWindow _bagWindow;
+
+    public SkillsWindow SkillsWindow;
 
     private BankWindow? _bankWindow;
 
@@ -147,6 +152,8 @@ public partial class GameInterface : MutableInterface
 
     public void InitGameGui()
     {
+        SkillsWindow = new SkillsWindow(GameCanvas);
+        //SkillsWindow.Show();  ----  Auto Shows Skill Window on login
         mChatBox = new Chatbox(GameCanvas, this);
         GameMenu = new MenuContainer(GameCanvas);
         Hotbar = new HotBarWindow(GameCanvas);
@@ -210,7 +217,7 @@ public partial class GameInterface : MutableInterface
             mAdminWindow.Show();
         }
 
-        return mAdminWindow.IsVisibleInParent;
+        return mAdminWindow.IsVisible;
     }
 
     //Shop
@@ -352,6 +359,7 @@ public partial class GameInterface : MutableInterface
         EscapeMenu.Update();
         PlayerBox?.Update();
         PlayerStatusWindow?.Update();
+        SkillsWindow?.Update();
         mMapItemWindow.Update();
         AnnouncementWindow?.Update();
         mPictureWindow?.Update();

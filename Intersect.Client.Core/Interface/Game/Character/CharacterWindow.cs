@@ -489,6 +489,11 @@ public partial class CharacterWindow
         return !mCharacterWindow.IsHidden;
     }
 
+    public int WindowX => mCharacterWindow.X;
+    public int WindowY => mCharacterWindow.Y;
+    public int WindowWidth => mCharacterWindow.Width;
+    public int WindowHeight => mCharacterWindow.Height;
+
     /// <summary>
     /// Hide the window
     /// </summary>

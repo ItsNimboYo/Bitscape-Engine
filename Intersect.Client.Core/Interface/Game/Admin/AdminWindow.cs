@@ -403,6 +403,7 @@ public partial class AdminWindow : Window
         get => _nameInput.Text?.Trim();
         set => _nameInput.Text = value;
     }
+    public bool IsVisible { get; internal set; }
 
     private void FaceTexturePickerOnSubmitted(TexturePicker sender, ValueChangedEventArgs<string?> arguments)
     {

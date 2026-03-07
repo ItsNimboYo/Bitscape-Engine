@@ -1093,6 +1093,18 @@ public partial class Player : Entity
         pkt.ClassId = ClassId;
         pkt.Stats = GetStatValues();
 
+        // BSC - Send skill levels to client
+        pkt.MeleeLevel = MeleeLevel;
+        pkt.ShieldingLevel = ShieldingLevel;
+        pkt.MagicLevel = MagicLevel;
+        pkt.DistanceLevel = DistanceLevel;
+        pkt.MiningLevel = MiningLevel;
+        pkt.SmithingLevel = SmithingLevel;
+        pkt.WoodcuttingLevel = WoodcuttingLevel;
+        pkt.CookingLevel = CookingLevel;
+        pkt.FishingLevel = FishingLevel;
+        pkt.CraftingLevel = CraftingLevel;
+
         if (Power.IsAdmin)
         {
             pkt.AccessLevel = Access.Admin;

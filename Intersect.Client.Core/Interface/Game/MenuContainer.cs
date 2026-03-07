@@ -249,6 +249,21 @@ public partial class MenuContainer : Panel
         _inventoryWindow.Update();
         _spellsWindow.Update();
         _characterWindow.Update();
+        if (Interface.GameUi?.SkillsWindow != null)
+        {
+            if (_characterWindow.IsVisible())
+            {
+                var skillsX = _characterWindow.WindowX;
+                var skillsY = _characterWindow.WindowY - Interface.GameUi.SkillsWindow.WindowHeight - 8;
+
+                Interface.GameUi.SkillsWindow.SetLocation(skillsX, skillsY);
+                Interface.GameUi.SkillsWindow.Show();
+            }
+            else
+            {
+                Interface.GameUi.SkillsWindow.Hide();
+            }
+        }
         _partyWindow.Update();
         _friendsWindow.Update();
         _questsWindow.Update(updateQuestLog);
